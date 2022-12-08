@@ -1,17 +1,19 @@
-<ion-header>
+<ion-header class="ion-no-border">
   <ion-toolbar>
-    <ion-title>sign-up-page</ion-title>
-  </ion-toolbar>
+    <ion-title>Signup</ion-title>
+    <ion-buttons slot="start" routerLink="/login">
+      <ion-button color="white">
+        <ion-icon slot="icon-only" name="arrow-back" ></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    </ion-toolbar>
 </ion-header>
-
 <ion-content>
-  <form [formGroup]="signUpForm" (ngSubmit)="signUpWithEmail()">
-    <ion-list lines="full">
-    
-      <ion-item>
+  <form [formGroup]="signUpForm" (ngSubmit)="signUpWithEmail()" id="form">
+     
         <ion-label position="floating">Email Address: </ion-label>
         <ion-input type="text" formControlName="email" placeholder="Enter Email Address"></ion-input>
-      </ion-item>
+      
       <div class="error-container">
         <ng-container *ngFor="let validation of validation_messages.email">
           <div class="error-message" *ngIf="signUpForm.get('email').hasError(validation.type) && (signUpForm.get('email').dirty || signUpForm.get('email').touched)">
@@ -20,10 +22,10 @@
           </div>
         </ng-container>
       </div>
-      <ion-item>
+    
         <ion-label position="floating">Password: </ion-label>
         <ion-input type="password" formControlName="password" placeholder="Enter Password"></ion-input>
-      </ion-item>
+      
       <div class="error-container">
         <ng-container *ngFor="let validation of validation_messages.password">
           <div class="error-message" *ngIf="signUpForm.get('password').hasError(validation.type) && (signUpForm.get('password').dirty || signUpForm.get('password').touched)">
@@ -33,9 +35,9 @@
         </ng-container>
       </div>
     
-    </ion-list>
+   
     
-    <ion-button type="submit" expand="block" [disabled]="!signUpForm.valid">Create Account</ion-button>
+    <ion-button type="submit" expand="block" [disabled]="!signUpForm.valid" color="tertiary" shape="round">Create Account</ion-button>
     
     <ion-button fill="clear" expand="block" [routerLink]="['/login-page']">
       I already have an account.
